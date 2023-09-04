@@ -1,0 +1,87 @@
+<%- include('./../../fragments/header.ejs')%>
+  <main>
+    <script type="application/javascript" src="../../../js/validationCommon.js"></script>
+    <script type="application/javascript" src="../../../js/validationUserForm.js"></script>
+    <h2>
+      <%= pageTitle %>
+    </h2>
+    <form id="myform" class="form" method="post" action="<%=formAction%>/#created" novalidate
+      onsubmit="return validateForm()">
+      <input type="hidden" name="_id" value="<%= user.dataValues?._id %>" />
+      <label for="firstName"><%= __('user.fields.firstName') %>: <span class="symbol-required">*</span></label>
+      <input class="<%= validationErrors && validationErrors.find(error =>
+    error.path.includes('firstName')) ? 'error-input' : '' %>" type="text" name="firstName" id="firstName"
+        placeholder="<%= __('user.fields.firstNamePlaceholder') %>" value="<%=
+    validationErrors && validationErrors.find(error =>
+    error.path.includes('firstName')) ? '' : user.dataValues?.firstName %>" required <%=(formMode=='showDetails' )
+        ? 'disabled' : ' ' %>
+      autocomplete="false" />
+      <span id="errorFirstName" class="errors-text">
+        <% if (validationErrors.find(error=> error.path.includes('firstName'))) {
+          %> <%= validationErrors?.find(error=>
+            error.path.includes('firstName')).message %> <% } %>
+      </span>
+
+      <label for="lastName"><%= __('user.fields.lastName') %>: <span class="symbol-required">*</span></label>
+      <input class="<%= validationErrors && validationErrors.find(error =>
+    error.path.includes('lastName')) ? 'error-input' : '' %>" type="text" name="lastName" id="lastName"
+        placeholder="<%= __('user.fields.lastNamePlaceholder') %>" value="<%=
+    validationErrors && validationErrors.find(error =>
+    error.path.includes('lastName')) ? '' : user.dataValues?.lastName %>" required <%=(formMode=='showDetails' )
+        ? 'disabled' : ' ' %>
+      autocomplete="false" />
+      <span id="errorLastName" class="errors-text">
+        <% if (validationErrors.find(error=> error.path.includes('lastName'))) {
+          %> <%= validationErrors?.find(error=>
+            error.path.includes('lastName')).message %> <% } %>
+      </span>
+
+      <label for="email"><%= __('user.fields.email') %>: <span class="symbol-required">*</span></label>
+      <input class="<%= validationErrors && validationErrors.find(error =>
+    error.path.includes('email')) ? 'error-input' : '' %>" type="email" name="email" id="email"
+        placeholder="<%= __('user.fields.emailPlaceholder') %>" value="<%=
+    validationErrors && validationErrors.find(error =>
+    error.path.includes('email')) ? '' : user.dataValues?.email %>" required <%=(formMode=='showDetails' ) ? 'disabled'
+        : ' ' %> autocomplete="false" />
+      <span id="errorEmail" class="errors-text">
+        <% if (validationErrors.find(error=> error.path.includes('email'))) { %>
+          <%= validationErrors?.find(error=> error.path.includes('email')).message
+            %> <% } %>
+      </span>
+
+      <label for="password"><%= __('user.fields.password') %>: <span class="symbol-required">*</span></label>
+      <input class="<%= validationErrors && validationErrors.find(error =>
+    error.path.includes('password')) ? 'error-input' : '' %>" type="password" name="password" id="password"
+        placeholder="<%= __('user.fields.passwordPlaceholder') %>" value="<%=(formMode=='showDetails' ) ? '**********' : '' %>" required
+        <%=(formMode=='showDetails' ) ? 'disabled' : ' ' %>
+      autocomplete="new-password" />
+      <span id="errorPassword" class="errors-text">
+        <% if (validationErrors.find(error=> error.path.includes('password'))) {
+          %> <%= validationErrors?.find(error=>
+            error.path.includes('password')).message %> <% } %>
+      </span>
+
+      <% if (formMode==='showDetails' ) { %>
+        <div class="sections-buttons">
+          <a href="/users/edit/<%= user.dataValues._id %>" class="list-actions-button-edit action-button"><%=btnLabel%></a>
+        </div>
+        <% } %>
+    </form>
+    <div class="form-buttons">
+      <p id="errorsSummary" class="errors-text"></p>
+      <% if (formMode !=='showDetails' ) { %>
+        <input type="submit" form="myform" value="<%=btnLabel%>" class="form-button-submit" />
+        <a href="/users" class="form-button-cancel"><%=backBtnLabel%></a>
+        <% } else { %>
+          <a href="/users" class="form-button-cancel"><%=backBtnLabel%></a>
+          <% } %>
+    </div>
+  </main>
+  <section style="display: none">
+    <span id="errorMessage-required"><%= __('validationMessage.fieldRequired')%></span>
+    <span id="errorMessage-charLimit260"><%= __('validationMessage.charLimit260')%></span>
+    <span id="errorMessage-charLimit560"><%= __('validationMessage.charLimit560')%></span>
+    <span id="errorMessage-email"><%= __('validationMessage.email')%></span>
+    <span id="errorMessage-form"><%= __('validationMessage.form')%></span>
+  </section>
+  <%- include('./../../fragments/footer.ejs')%>

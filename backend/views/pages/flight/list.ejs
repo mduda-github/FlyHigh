@@ -1,0 +1,60 @@
+<%- include('./../../fragments/header.ejs')%>
+  <main>
+    <h2><%= __('flight.list.pageTitle') %></h2>
+    <table class="table-list">
+      <thead>
+        <tr>
+          <th><%= __('flight.fields.number') %></th>
+          <th><%= __('flight.fields.date') %></th>
+          <th><%= __('flight.fields.comment') %></th>
+          <% if(loggedUser) { %>
+            <th><%= __('listActions.title') %></th>
+            <% } %>
+        </tr>
+      </thead>
+      <tbody>
+        <% for (let flight of flights) { %>
+          <tr>
+            <td>
+              <%= flight.number %>
+            </td>
+            <td>
+              <%= flight.date.toLocaleString('pl-PL').replace(',', "" ).replace(':00', "" ) %>
+            </td>
+            <td>
+              <%= flight.comment %>
+            </td>
+            <% if(loggedUser) { %>
+              <td>
+                <ul class="list-actions">
+                  <li><a href="/flights/details/<%=flight._id%>" class="list-actions-button-details"><%= __('listActions.details') %></a></li>
+                  <li><a href="/flights/edit/<%=flight._id%>" class="list-actions-button-edit"><%= __('listActions.edit') %></a></li>
+                  <li><a href="#confirm<%=flight._id%>" class="list-actions-button-delete"><%= __('listActions.delete') %></a></li>
+                </ul>
+                <div id="confirm<%=flight._id%>" class="popup">
+                  <span><%= __('listActions.deleteConformation') %></span>
+                  <a href="/flights/delete/<%=flight._id%>/#removed"><%= __('listActions.confirm') %></a>
+                  <a href="/flights"><%= __('listActions.refuse') %></a>
+                </div>
+              </td>
+              <% } %>
+        
+          </tr>
+          <% } %>
+      </tbody>
+    </table>
+
+    <% if(loggedUser) { %>
+      <p><a href="flights/add" class="button-add"><%= __('flight.list.addNew') %></a></p>
+    <% } %>
+    <div id="removed" class="alert">
+      <%= __('flight.list.flightRemoved') %>
+    </div>
+    <div id="created" class="alert">
+      <%= __('flight.list.flightCreated') %>
+    </div>
+    <div id="updated" class="alert">
+      <%= __('flight.list.flightUpdated') %>
+    </div>
+  </main>
+  <%- include('./../../fragments/footer.ejs')%>

@@ -1,0 +1,54 @@
+<%- include('./../../fragments/header.ejs')%>
+  <main>
+    <h2><%= __('plane.list.pageTitle') %></h2>
+    <table class="table-list">
+      <thead>
+        <tr>
+          <th><%= __('plane.fields.name') %></th>
+          <th><%= __('plane.fields.seats') %></th>
+          <% if(loggedUser) { %>
+            <th><%= __('listActions.title') %></th>
+            <% } %>
+        </tr>
+      </thead>
+      <tbody>
+        <% for (let plane of planes) { %>
+          <tr>
+            <td>
+              <%= plane.name %>
+            </td>
+            <td>
+              <%= plane.seats %>
+            </td>
+            <% if(loggedUser) { %>
+              <td>
+                <ul class="list-actions">
+                  <li><a href="/planes/details/<%=plane._id%>" class="list-actions-button-details"><%= __('listActions.details') %></a></li>
+                  <li><a href="/planes/edit/<%=plane._id%>" class="list-actions-button-edit"><%= __('listActions.edit') %></a></li>
+                  <li><a href="#confirm<%=plane._id%>" class="list-actions-button-delete"><%= __('listActions.delete') %></a></li>
+                </ul>
+                <div id="confirm<%=plane._id%>" class="popup">
+                  <span><%= __('listActions.deleteConformation') %></span>
+                  <a href="/planes/delete/<%=plane._id%>/#removed"><%= __('listActions.confirm') %></a>
+                  <a href="/planes"><%= __('listActions.refuse') %></a>
+                </div>
+              </td>
+              <% } %>
+          </tr>
+          <% } %>
+      </tbody>
+    </table>
+    <% if(loggedUser) { %>
+      <p><a href="/planes/add" class="button-add"><%= __('plane.list.addNew') %></a></p>
+      <% } %>
+      <div id="removed" class="alert">
+        <%= __('plane.list.planeRemoved') %>
+      </div>
+      <div id="created" class="alert">
+        <%= __('plane.list.planeCreated') %>
+      </div>
+      <div id="updated" class="alert">
+        <%= __('plane.list.planeUpdated') %>
+      </div>
+  </main>
+  <%- include('./../../fragments/footer.ejs')%>

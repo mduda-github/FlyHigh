@@ -1,0 +1,58 @@
+<%- include('./../../fragments/header.ejs')%>
+  <main>
+    <h2><%= __('user.list.pageTitle') %></h2>
+    <table class="table-list">
+      <thead>
+        <tr>
+          <th><%= __('user.fields.firstName') %></th>
+          <th><%= __('user.fields.lastName') %></th>
+          <th><%= __('user.fields.email') %></th>
+          <% if(loggedUser) { %>
+            <th><%= __('listActions.title') %></th>
+            <% } %>
+        </tr>
+      </thead>
+      <tbody>
+        <% for (let user of users) { %>
+          <tr>
+            <td>
+              <%= user.firstName %>
+            </td>
+            <td>
+              <%= user.lastName %>
+            </td>
+            <td>
+              <%= user.email %>
+            </td>
+            <% if(loggedUser) { %>
+              <td>
+                <ul class="list-actions">
+                  <li><a href="/users/details/<%=user._id%>" class="list-actions-button-details"><%= __('listActions.details') %></a></li>
+                  <li><a href="/users/edit/<%=user._id%>" class="list-actions-button-edit"><%= __('listActions.edit') %></a></li>
+                  <li><a href="#confirm<%=user._id%>" class="list-actions-button-delete"><%= __('listActions.delete') %></a></li>
+                </ul>
+                <div id="confirm<%=user._id%>" class="popup">
+                  <span><%= __('listActions.deleteConformation') %></span>
+                  <a href="/users/delete/<%=user._id%>/#removed"><%= __('listActions.confirm') %></a>
+                  <a href="/users"><%= __('listActions.refuse') %></a>
+                </div>
+              </td>
+              <% } %>
+          </tr>
+          <% } %>
+      </tbody>
+    </table>
+    <% if(loggedUser) { %>
+      <p><a href="/users/add" class="button-add"><%= __('user.list.addNew') %></a></p>
+    <% } %>
+    <div id="removed" class="alert">
+      <%= __('user.list.userRemoved') %>
+    </div>
+    <div id="created" class="alert">
+      <%= __('user.list.userCreated') %>
+    </div>
+    <div id="updated" class="alert">
+      <%= __('user.list.userUpdated') %>
+    </div>
+  </main>
+  <%- include('./../../fragments/footer.ejs')%>

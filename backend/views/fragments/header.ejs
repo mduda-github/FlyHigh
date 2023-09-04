@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pl-PL">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>FlyHigh</title>
+  <link rel="stylesheet" href="../../css/styles.css" />
+</head>
+
+<body>
+  <header>
+    <h1>FlyHigh</h1>
+    <img src="../../img/logo.svg" alt="FlyHigh Logo" />
+  </header>
+  <nav>
+    <ul>
+      <li><a href="/" class="<%= navLocation === 'main' ? 'active' : ''%>"> <%= __('nav.mainPage') %> </a></li>
+      <li><a href="/cities" class="<%= navLocation === 'city' ? 'active' : ''%>"> <%= __('nav.cities') %> </a></li>
+      <li><a href="/flights" class="<%= navLocation === 'flight' ? 'active' : ''%>"> <%= __('nav.flights') %> </a></li>
+      <li><a href="/planes" class="<%= navLocation === 'plane' ? 'active' : ''%>"> <%= __('nav.planes') %> </a></li>
+      <% if(loggedUser) { %>
+        <li><a href="/users" class="<%= navLocation === 'user' ? 'active' : ''%>"> <%= __('nav.users') %> </a></li>
+        <% } %>
+        <li><a href="/changeLang/pl" class="<%= lang === 'pl' ? 'active' : ''%>">PL</a></li>
+        <li><a href="/changeLang/en" class="<%= lang === 'en' ? 'active' : ''%>">EN</a></li>
+      <li><a href="/login" class="<%= navLocation === 'login' ? 'active' : ''%>"> <%= __('nav.login') %> </a></li>
+    </ul>
+  </nav>

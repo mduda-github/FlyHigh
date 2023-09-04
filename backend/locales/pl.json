@@ -1,0 +1,189 @@
+{
+  "mainPage": {
+    "title": "Witaj",
+    "content": "Firma FlyHigh jest największym przewoźnikiem lotniczym w kraju. Obsługujemy dziennie ponad 20 lotów i dbamy o najwyższą jakość naszych usług."
+  },
+  "nav": {
+    "mainPage": "Strona główna",
+    "cities": "Miasta",
+    "flights": "Loty",
+    "planes": "Samoloty",
+    "users": "Użytkownicy",
+    "login": "Zaloguj"
+  },
+  "listActions": {
+    "title": "Akcje",
+    "details": "Szczegóły",
+    "edit": "Edytuj",
+    "delete": "Usuń",
+    "deleteConformation": "Czy na pewno chcesz usunąć?",
+    "confirm": "Tak",
+    "refuse": "Nie"
+  },
+  "formActions": {
+    "return": "Powrót",
+    "edit": "Edytuj",
+    "cancel": "Anuluj"
+  },
+  "city": {
+    "fields": {
+      "name": "Nazwa",
+      "code": "Kod lotniska",
+      "namePlaceholder": "2-60 znaków",
+      "codePlaceholder": "3 znaki"
+    },
+    "list": {
+      "addNew": "Dodaj nowe miasto",
+      "noData": "Brak danych w bazie",
+      "pageTitle": "Lista miast",
+      "cityCreated": "Utworzono nowe miasto!",
+      "cityRemoved": "Miasto zostało usunięte!",
+      "cityUpdated": "Miasto zostało zaktualizowane!"
+    },
+    "form": {
+      "add": {
+        "pageTitle": "Dodawanie miasta",
+        "btnLabel": "Dodaj",
+        "backBtnLabel": "Anuluj"
+      },
+      "edit": {
+        "pageTitle": "Edycja miasta",
+        "btnLabel": "Zapisz zmiany",
+        "backBtnLabel": "Anuluj"
+      },
+      "flights": "Historia lotów",
+      "details": {
+        "pageTitle": "Szczegóły miasta",
+        "btnLabel": "Edytuj",
+        "backBtnLabel": "Powrót"
+      }
+    }
+  },
+  "flight": {
+    "fields": {
+      "number": "Numer lotu",
+      "date": "Data",
+      "comment": "Komentarz",
+      "numberPlaceholder": "6 znaków",
+      "city": "Wybierz miasto",
+      "plane": "Wybierz samolot"
+    },
+    "list": {
+      "addNew": "Dodaj nowy lot",
+      "noData": "Brak danych w bazie",
+      "pageTitle": "Lista lotów",
+      "flightCreated": "Utworzono nowy lot!",
+      "flightRemoved": "Lot został usunięty!",
+      "flightUpdated": "Lot został zaktualizowany!"
+    },
+    "form": {
+      "details": {
+        "pageTitle": "Szczegóły lotu",
+        "btnLabel": "Edytuj",
+        "backBtnLabel": "Powróć"
+      },
+      "edit": {
+        "pageTitle": "Edycja lotu",
+        "btnLabel": "Zapisz zmiany",
+        "backBtnLabel": "Anuluj"
+      },
+      "add": {
+        "pageTitle": "Dodawanie lotu",
+        "btnLabel": "Dodaj",
+        "backBtnLabel": "Anuluj"
+      }
+    }
+  },
+  "plane": {
+    "fields": {
+      "name": "Nazwa",
+      "seats": "Ilość miejsc",
+      "namePlaceholder": "2-60 znaków"
+    },
+    "list": {
+      "addNew": "Dodaj nowy samolot",
+      "noData": "Brak danych w bazie",
+      "pageTitle": "Lista samolotów",
+      "planeCreated": "Utworzono nowy samolot!",
+      "planeRemoved": "Samolot został usunięty!",
+      "planeUpdated": "Samolot został zaktualizowany!"
+    },
+    "form": {
+      "details": {
+        "pageTitle": "Szczegóły samolotu",
+        "btnLabel": "Edytuj",
+        "backBtnLabel": "Powrót"
+      },
+      "flights": "Historia lotów",
+      "edit": {
+        "pageTitle": "Edycja samolotu",
+        "btnLabel": "Zapisz zmiany",
+        "backBtnLabel": "Anuluj"
+      },
+      "add": {
+        "pageTitle": "Dodawanie samolotu",
+        "btnLabel": "Dodaj",
+        "backBtnLabel": "Anuluj"
+      }
+    }
+  },
+  "user": {
+    "fields": {
+      "firstName": "Imię",
+      "lastName": "Nazwisko",
+      "email": "Email",
+      "firstNamePlaceholder": "2-60 znaków",
+      "lastNamePlaceholder": "2-60 znaków",
+      "emailPlaceholder": "przykładowy@mail.com",
+      "password": "Hasło",
+      "passwordPlaceholder": "co najmniej 5 znaków"
+    },
+    "list": {
+      "addNew": "Dodaj nowego użytkownika",
+      "noData": "Brak danych w bazie",
+      "pageTitle": "Lista użytkowników",
+      "userCreated": "Utworzono nowego użytkownika!",
+      "userRemoved": "Użytkownik został usunięty!",
+      "userUpdated": "Użytkownik został zaktualizowany!"
+    },
+    "form": {
+      "add": {
+        "pageTitle": "Dodawanie użytkownika",
+        "btnLabel": "Dodaj",
+        "backBtnLabel": "Anuluj"
+      },
+      "details": {
+        "pageTitle": "Szczególy użytkownika",
+        "btnLabel": "Edytuj",
+        "backBtnLabel": "Powrót"
+      },
+      "edit": {
+        "pageTitle": "Edycja użytkownika",
+        "btnLabel": "Zapisz zmiany",
+        "backBtnLabel": "Anuluj"
+      }
+    }
+  },
+  "validationMessage": {
+    "notEmpty": "Pole jest wymagane",
+    "charLimit260": "Pole powinno zawierać od 2 do 60 znaków",
+    "charLimit560": "Pole powinno zawierać od 5 do 60 znaków",
+    "charLimit6": "Pole powinno zawierać 3 znaków",
+    "charLimit3": "Pole powinno zawierać 3 znaki",
+    "dateFormat": "Pole powinno zawierać datę w formacie rrrr-MM-dd (np. 2000-01-01)",
+    "date": "Data nie może być z przeszłości",
+    "email": "E-mail jest nieprawidłowy",
+    "form": "Formularz zawiera błędy",
+    "login": "Nieprawidłowy adres e-mail lub hasło"
+  },
+  "login": {
+    "pageTitle": "Logowanie",
+    "logoutBtnLabel": "Wyloguj",
+    "fields": {
+      "email": "Email",
+      "password": "Hasło"
+    },
+    "loginBtnLabel": "Zaloguj",
+    "loggedAs": "Jesteś zalogowany jako"
+  }
+}

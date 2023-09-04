@@ -1,0 +1,105 @@
+<%- include('./../../fragments/header.ejs')%>
+<main>
+  <script
+    type="application/javascript"
+    src="../../../js/validationCommon.js"
+  ></script>
+  <script
+    type="application/javascript"
+    src="../../../js/validationFlightForm.js"
+  ></script>
+  <h2><%= pageTitle %></h2>
+  <form
+    id="myform"
+    class="form"
+    method="post"
+    action="<%=formAction%>/#created"
+    novalidate
+    onsubmit="return validateForm()"
+  >
+    <input type="hidden" name="_id" value="<%= flight.dataValues?._id %>" />
+    <label for="number"><%= __('flight.fields.number') %>: <span class="symbol-required">*</span></label>
+    <input class="<%= validationErrors && validationErrors.find(error =>
+    error.path.includes('number')) ? 'error-input' : '' %>" type="text"
+    name="number" id="number" placeholder="<%= __('flight.fields.numberPlaceholder') %>" value="<%= validationErrors
+    && validationErrors.find(error => error.path.includes('number')) ? '' :
+    flight && flight.dataValues?.number %>" required <%=(formMode=='showDetails'
+    ) ? 'disabled' : '' %> />
+    <span id="errorNumber" class="errors-text">
+      <% if (validationErrors.find(error=> error.path.includes('number'))) { %>
+      <%= validationErrors?.find(error=> error.path.includes('number')).message
+      %> <% } %>
+    </span>
+
+    <label for="date"><%= __('flight.fields.date') %>: <span class="symbol-required">*</span></label>
+    <input class="<%= validationErrors && validationErrors.find(error =>
+    error.path.includes('date')) ? 'error-input' : '' %>" type="datetime-local"
+    name="date" id="date" value="<%= validationErrors &&
+    validationErrors.find(error => error.path.includes('date')) ? '' :
+    flight.dataValues && new
+    Date(flight.dataValues?.date).toISOString().slice(0, -8) %>" required
+    <%=(formMode=='showDetails' ) ? 'disabled' : '' %> />
+    <span id="errorDate" class="errors-text">
+      <% if (validationErrors.find(error=> error.path.includes('date'))) { %>
+      <%= validationErrors?.find(error=> error.path.includes('date')).message %>
+      <% } %>
+    </span>
+
+    <label for="city_id"><%= __('flight.fields.city') %>: <span class="symbol-required">*</span></label>
+    <select name="city_id" id="city_id" required <%=(formMode=='showDetails' ) ? 'disabled' : '' %>>
+      <option value="none" disabled hidden>-- <%= __('flight.fields.city') %> --</option>
+      <% for (let i=0; i<allCities.length ; i++) { let city=allCities[i]; %>
+        <option value="<%= city._id %>" label="<%= city.name %>" <%=(flight._id &&
+          flight._id.toString()==city._id.toString()) ? 'selected' : '' %>></option>
+        <% } %>
+    </select>
+    <span id="errorCity" class="errors-text"></span>
+
+    <label for="plane_id"><%= __('flight.fields.plane') %>: <span class="symbol-required">*</span></label>
+    <select name="plane_id" id="plane_id" required <%=(formMode=='showDetails' ) ? 'disabled' : '' %>>
+      <option value="none" disabled hidden>-- <%= __('flight.fields.plane') %> --</option>
+      <% for (let i=0; i<allPlanes.length; i++) { let plane=allPlanes[i]; %>
+        <option value="<%= plane._id %>" label="<%= plane.name %>" <%=(flight._id &&
+          flight._id.toString()==plane._id.toString()) ? 'selected' : '' %>></option>
+        <% } %>
+    </select>
+    <span id="errorPlane" class="errors-text"></span>
+
+    <label for="comment"><%= __('flight.fields.comment') %>: </label>
+    <textarea name="comment" id="comment" rows="5" cols="40" <%=( formMode=='showDetails' ) ? 'disabled' : ''
+      %>><%= flight.dataValues?.comment %></textarea>
+    <span id="errorComment" class="errors-text"></span>
+
+    <% if (formMode==='showDetails' ) { %>
+    <div class="sections-buttons">
+      <a
+        href="/flights/edit/<%= flight.dataValues._id %>"
+        class="list-actions-button-edit action-button"
+        ><%=btnLabel%></a
+      >
+    </div>
+    <% } %>
+  </form>
+  <div class="form-buttons">
+    <p id="errorsSummary" class="errors-text"></p>
+    <% if (formMode !=='showDetails' ) { %>
+    <input
+      type="submit"
+      form="myform"
+      value="<%=btnLabel%>"
+      class="form-button-submit"
+    />
+    <a href="/flights" class="form-button-cancel"><%=backBtnLabel%></a>
+    <% } else { %>
+    <a href="/flights" class="form-button-cancel"><%=backBtnLabel%></a>
+    <% } %>
+  </div>
+</main>
+<section style="display: none">
+  <span id="errorMessage-required"><%= __('validationMessage.fieldRequired')%></span>
+  <span id="errorMessage-charLimit6"><%= __('validationMessage.charLimit6')%></span>
+  <span id="errorMessage-dateFormat"><%= __('validationMessage.dateFormat')%></span>
+  <span id="errorMessage-date"><%= __('validationMessage.date')%></span>
+  <span id="errorMessage-form"><%= __('validationMessage.form')%></span>
+</section>
+<%- include('./../../fragments/footer.ejs')%>

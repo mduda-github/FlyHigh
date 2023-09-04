@@ -1,0 +1,108 @@
+<%- include('./../../fragments/header.ejs')%>
+<main>
+  <script
+    type="application/javascript"
+    src="../../../js/validationCommon.js"
+  ></script>
+  <script
+    type="application/javascript"
+    src="../../../js/validationPlaneForm.js"
+  ></script>
+  <h2><%= pageTitle %></h2>
+  <form
+    id="myform"
+    class="form"
+    method="post"
+    action="<%=formAction%>/#created"
+    novalidate
+    onsubmit="return validateForm()"
+  >
+    <input type="hidden" name="_id" value="<%= plane.dataValues?._id %>" />
+    <label for="name"><%= __('plane.fields.name') %>: <span class="symbol-required">*</span></label>
+    <input class="<%= validationErrors && validationErrors.find(error =>
+    error.path.includes('name')) ? 'error-input' : '' %>" type="text"
+    name="name" id="name" placeholder="<%= __('plane.fields.namePlaceholder') %>" value="<%= validationErrors
+    && validationErrors.find(error => error.path.includes('name')) ? '' :
+    plane.dataValues?.name %>" required <%=(formMode=='showDetails' ) ?
+    'disabled' : ' ' %> />
+    <span id="errorName" class="errors-text">
+      <% if (validationErrors.find(error=> error.path.includes('name'))) { %>
+      <%= validationErrors?.find(error=> error.path.includes('name')).message %>
+      <% } %>
+    </span>
+    <label for="seats"
+      ><%= __('plane.fields.seats') %>: <span class="symbol-required">*</span></label
+    >
+    <input class="<%= validationErrors && validationErrors.find(error =>
+    error.path.includes('seats')) ? 'error-input' : '' %>" type="number"
+    name="seats" id="seats" value="<%= validationErrors &&
+    validationErrors.find(error => error.path.includes('seats')) ? '' :
+    plane.dataValues?.seats %>" required <%=(formMode=='showDetails' ) ?
+    'disabled' : ' ' %> />
+    <span id="errorSeats" class="errors-text">
+      <% if (validationErrors.find(error=> error.path.includes('seats'))) { %>
+      <%= validationErrors?.find(error=> error.path.includes('seats')).message
+      %> <% } %>
+    </span>
+    <% if (formMode==='showDetails' ) { %>
+    <div class="sections-buttons">
+      <a
+        href="/planes/edit/<%= plane.dataValues?._id %>"
+        class="list-actions-button-edit action-button"
+        ><%=btnLabel%></a
+      >
+    </div>
+    <% } %>
+  </form>
+  <% if ((formMode==='showDetails' || formMode==='edit') && plane.flights.length) { %>
+
+  <h2><%= __('plane.form.flights') %></h2>
+  <table class="table-list">
+    <thead>
+      <tr>
+        <th>
+          <%= __('flight.fields.number') %>
+        </th>
+        <th>
+          <%= __('flight.fields.date') %>
+        </th>
+        <th>
+          <%= __('flight.fields.comment') %>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <% for (let flight of plane.flights) { %>
+      <tr>
+        <td><%= flight.dataValues.number %></td>
+        <td>
+          <%= flight.dataValues.date.toLocaleString('pl-PL').replace(',', ""
+          ).replace(':00', "" ) %>
+        </td>
+        <td><%= flight.dataValues.comment %></td>
+      </tr>
+      <% } %>
+    </tbody>
+  </table>
+  <% } %>
+  <div class="form-buttons">
+    <p id="errorsSummary" class="errors-text"></p>
+    <% if (formMode !=='showDetails' ) { %>
+    <input
+      type="submit"
+      form="myform"
+      value="<%=btnLabel%>"
+      class="form-button-submit"
+    />
+    <a href="/planes" class="form-button-cancel"><%=backBtnLabel%></a>
+    <% } else { %>
+    <a href="/planes" class="form-button-cancel"><%=backBtnLabel%></a>
+    <% } %>
+  </div>
+</main>
+<section style="display: none">
+  <span id="errorMessage-required"><%= __('validationMessage.fieldRequired')%></span>
+  <span id="errorMessage-charLimit260"><%= __('validationMessage.charLimit260')%></span>
+  <span id="errorMessage-form"><%= __('validationMessage.form')%></span>
+</section>
+<%- include('./../../fragments/footer.ejs')%>

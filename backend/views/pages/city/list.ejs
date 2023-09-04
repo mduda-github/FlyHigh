@@ -1,0 +1,54 @@
+<%- include('./../../fragments/header.ejs')%>
+  <main>
+    <h2><%= __('city.list.pageTitle') %></h2>
+    <table class="table-list">
+      <thead>
+        <tr>
+          <th><%= __('city.fields.name') %></th>
+          <th><%= __('city.fields.code') %></th>
+          <% if(loggedUser) { %>
+            <th><%= __('listActions.title') %></th>
+            <% } %>
+        </tr>
+      </thead>
+      <tbody>
+        <% for (let city of cities) { %>
+          <tr>
+            <td>
+              <%= city.name %>
+            </td>
+            <td>
+              <%= city.code %>
+            </td>
+            <% if(loggedUser) { %>
+              <td>
+                <ul class="list-actions">
+                  <li><a href="/cities/details/<%=city._id%>" class="list-actions-button-details"><%= __('listActions.details') %></a></li>
+                  <li><a href="/cities/edit/<%=city._id%>" class="list-actions-button-edit"><%= __('listActions.edit') %></a></li>
+                  <li><a href="#confirm<%=city._id%>" class="list-actions-button-delete"><%= __('listActions.delete') %></a></li>
+                </ul>
+                <div id="confirm<%=city._id%>" class="popup">
+                  <span><%= __('listActions.deleteConformation') %></span>
+                  <a href="/cities/delete/<%=city._id%>/#removed"><%= __('listActions.confirm') %></a>
+                  <a href="/cities"><%= __('listActions.refuse') %></a>
+                </div>
+              </td>
+              <% } %>
+          </tr>
+          <% } %>
+      </tbody>
+    </table>
+    <% if(loggedUser) { %>
+      <p><a href="/cities/add" class="button-add"><%= __('city.list.addNew') %></a></p>
+    <% } %>
+    <div id="removed" class="alert">
+      <%= __('city.list.cityRemoved') %>
+    </div>
+    <div id="created" class="alert">
+      <%= __('city.list.cityCreated') %>
+    </div>
+    <div id="updated" class="alert">
+      <%= __('city.list.cityUpdated') %>
+    </div>
+  </main>
+  <%- include('./../../fragments/footer.ejs')%>

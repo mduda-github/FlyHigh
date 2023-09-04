@@ -1,0 +1,31 @@
+<%- include('./../../fragments/header.ejs')%>
+  <main>
+    <h2>
+      <%= __('login.pageTitle') %>
+    </h2>
+    <% if(!loggedUser) { %>
+      <form id="myform" method="post" class="form" action="/login" novalidate>
+        <label for="loginEmail"><%= __('login.fields.email') %>:</label>
+        <input type="email" id="loginEmail" name="email">
+        <span></span>
+
+        <label for="loginPassword"><%= __('login.fields.password') %>:</label>
+        <input type="password" id="loginPassword" name="password">
+        <span></span>
+      </form>
+      <span class="errors-text login-error">
+        <%= loginError ? loginError : '' %>
+      </span>
+      <div class="form-buttons">
+        <input class="form-button-submit" form="myform" type="submit" value="<%= __('login.loginBtnLabel') %>">
+      </div>
+      <% } else { %>
+        <span><%= __('login.loggedAs') %>: <b>
+            <%= loggedUser.firstName + " " + loggedUser.lastName %>
+          </b></span>
+        <div class="form-buttons">
+          <a class="form-button-cancel" href="/logout"><%= __('login.logoutBtnLabel') %></a>
+        </div>
+        <% } %>
+  </main>
+  <%- include('./../../fragments/footer.ejs')%>
