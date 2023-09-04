@@ -1,0 +1,197 @@
+{
+  "mainPage": {
+    "title": "Welcome",
+    "content": "FlyHigh is the largest air carrier in the country. We operate more than 20 flights a day and are committed to the highest quality of our services."
+  },
+  "auth": {
+    "pageTitle": "Login",
+    "loggedAs": "You are logged in as",
+    "fields": {
+      "email": "Email",
+      "password": "Password"
+    },
+    "loginBtnLabel": "Log in",
+    "logoutBtnLabel": "Log out"
+  },
+  "nav": {
+    "mainPage": "Home",
+    "cities": "Cities",
+    "flights": "Flights",
+    "planes": "Planes",
+    "users": "Users",
+    "login": "Login"
+  },
+  "listActions": {
+    "title": "Actions",
+    "details": "Details",
+    "edit": "Edit",
+    "delete": "Delete",
+    "deleteConformation": "Are you sure you want to delete?",
+    "confirm": "Yes",
+    "refuse": "No"
+  },
+  "formActions": {
+    "return": "Return",
+    "edit": "Edit",
+    "cancel": "Cancel"
+  },
+  "city": {
+    "fields": {
+      "name": "City name",
+      "namePlaceholder": "2-60 characters",
+      "code": "Code",
+      "codePlaceholder": "3 characters"
+    },
+    "list": {
+      "addNew": "Add a new city",
+      "noData": "No cities in database",
+      "pageTitle": "List of cities",
+      "loading": "Loading cities...",
+      "error": "Error",
+      "cityCreated": "The new city has been successfully created!",
+      "cityRemoved": "The city has been successfully removed!",
+      "cityUpdated": "The city has been successfully updated!"
+    },
+    "form": {
+      "add": {
+        "pageTitle": "Adding a new city",
+        "btnLabel": "Add",
+        "backBtnLabel": "Cancel"
+      },
+      "edit": {
+        "pageTitle": "Editing a city",
+        "btnLabel": "Save changes",
+        "backBtnLabel": "Cancel"
+      },
+      "details": {
+        "pageTitle": "City details",
+        "btnLabel": "Edit",
+        "backBtnLabel": "Back"
+      },
+      "flights": "History of flights"
+    }
+  },
+  "flight": {
+    "fields": {
+      "number": "Flight number",
+      "date": "Date",
+      "city": "Choose city",
+      "plane": "Choose plane",
+      "comment": "Comment",
+      "numberPlaceholder": "6 characters"
+    },
+    "list": {
+      "addNew": "Add new flight",
+      "noData": "No flights in database",
+      "pageTitle": "List of flights",
+      "loading": "Loading flights...",
+      "error": "Error",
+      "flightCreated": "The new flight has been successfully created!",
+      "flightRemoved": "The flight has been successfully removed!",
+      "flightUpdated": "The flight has been successfully updated!"
+    },
+    "form": {
+      "add": {
+        "pageTitle": "Adding a new flight",
+        "btnLabel": "Add",
+        "backBtnLabel": "Cancel"
+      },
+      "edit": {
+        "pageTitle": "Editing a flight",
+        "btnLabel": "Save changes",
+        "backBtnLabel": "Cancel"
+      },
+      "details": {
+        "pageTitle": "Flight details",
+        "btnLabel": "Edit",
+        "backBtnLabel": "Back"
+      },
+      "flights": "History of flights"
+    }
+  },
+  "plane": {
+    "fields": {
+      "name": "Plane name",
+      "namePlaceholder": "2-60 characters",
+      "seats": "Seats"
+    },
+    "list": {
+      "addNew": "Add new plane",
+      "noData": "No planes in database",
+      "pageTitle": "List of planes",
+      "loading": "Loading planes...",
+      "error": "Error",
+      "planeCreated": "The new plane has been successfully created!",
+      "planeRemoved": "The plane has been successfully removed!",
+      "planeUpdated": "The plane has been successfully updated!"
+    },
+    "form": {
+      "add": {
+        "pageTitle": "Adding a new plane",
+        "btnLabel": "Add",
+        "backBtnLabel": "Cancel"
+      },
+      "edit": {
+        "pageTitle": "Editing a plane",
+        "btnLabel": "Save changes",
+        "backBtnLabel": "Cancel"
+      },
+      "details": {
+        "pageTitle": "Plane details",
+        "btnLabel": "Edit",
+        "backBtnLabel": "Back"
+      },
+      "flights": "History of flights"
+    }
+  },
+  "user": {
+    "fields": {
+      "firstName": "First name",
+      "lastName": "Last name",
+      "email": "Email",
+      "password": "Password",
+      "firstNamePlaceholder": "2-60 characters",
+      "lastNamePlaceholder": "2-60 characters",
+      "emailPlaceholder": "example@mail.com",
+      "passwordPlaceholder": "at least 5 characters"
+    },
+    "list": {
+      "addNew": "Add new user",
+      "noData": "No users in database",
+      "pageTitle": "List of users",
+      "loading": "Loading users...",
+      "error": "Error",
+      "userCreated": "The new user has been successfully created!",
+      "userRemoved": "The user has been successfully removed!",
+      "userUpdated": "The user has been successfully updated!"
+    },
+    "form": {
+      "add": {
+        "pageTitle": "Adding a new user",
+        "btnLabel": "Add",
+        "backBtnLabel": "Cancel"
+      },
+      "edit": {
+        "pageTitle": "Editing a user",
+        "btnLabel": "Save changes",
+        "backBtnLabel": "Cancel"
+      },
+      "details": {
+        "pageTitle": "User details",
+        "btnLabel": "Edit",
+        "backBtnLabel": "Back"
+      }
+    }
+  },
+  "validationMessage": {
+    "notEmpty": "The field is required",
+    "len_2_60": "The field should contain from 2 to 60 characters",
+    "len_5_60": "The field should contain from 5 to 60 characters",
+    "len_6": "The field should contain 6 characters",
+    "len_3": "The field should contain 3 characters",
+    "date": "The date cannot be from the past",
+    "email": "The email is incorrect",
+    "form": "The form contains errors",
+    "login": "Incorrect email address or password"
+  }
+}
